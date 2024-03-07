@@ -20,9 +20,9 @@ function Form() {
       <form action="" method="post">
         <label htmlFor="course">Kurs</label>
         <select name="course" id="course">
-          <option value="java">Java</option>
-          <option value="python">Python</option>
-          <option value="javaScript">JavaScript</option>
+          <option value={()=>setCourse('java')}>Java</option>
+          <option value={()=>setCourse('Python')}>Python</option>
+          <option value={()=>setCourse('JavaScript')}>JavaScript</option>
         </select>
         <label htmlFor="date">Datum</label>
         <input type="date" name="date" id="date" />
@@ -36,19 +36,20 @@ function Form() {
         </div>
         <div>
           <label htmlFor="name">Name:</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" onChange={(e)=>setName(e.target.value)}/>
+          <p>{name}</p>
           <label htmlFor="lastname">Nachname:</label>
-          <input type="text" name="lastname" id="lastname" />
+          <input type="text" name="lastname" id="lastname" onChange={(e)=> setLastname(e.target.value)} />
           <label htmlFor="email">Email:</label>
-          <input type="text" name="email" id="email" />
+          <input type="text" name="email" id="email" onChange={(e)=> setEmail(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="street">Strasse und Nummer:</label>
-          <input type="text" name="street" id="street" />
+          <input type="text" name="street" id="street" onChange={(e)=> setStreet(e.target.value)}/>
           <label htmlFor="zipcode">PLZ:</label>
-          <input type="text" name="zipcode" id="zipcode" />
+          <input type="text" name="zipcode" id="zipcode" onChange={(e)=> setPlz(e.target.value)}/>
           <label htmlFor="city">Stadt:</label>
-          <input type="text" name="city" id="city" />
+          <input type="text" name="city" id="city" onChange={(e)=> setCity(e.target.value)} />
         </div>
       </form>
     </div>
