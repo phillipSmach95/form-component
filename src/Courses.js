@@ -2,12 +2,13 @@
 import './Courses.css';
 import Form from './components/Form';
 
-function Coureses() {
+function Courses() {
+  const courses = ["Java", "Python", "JavaScript"]
   return (
     <div className="App">
-      <Form></Form>
+      <Form courses={courses}/>
     </div>
   );
 }
 
-export default Coureses;
+export default Courses;

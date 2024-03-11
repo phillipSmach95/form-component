@@ -1,13 +1,31 @@
 import { useState } from "react";
 import "./Form.css";
 
-function Form() {
+function Form(props) {
   const today = new Date();
+  let params = new URL(window.location).searchParams;
+  const initData = {
+    date: params.get("date"),
+    course: params.get("course"),
+    level: params.get("level"),
+    name: params.get("name"),
+    lastname: params.get("lastname"),
+    email: params.get("email"),
+    street: params.get("street"),
+    zipcode: params.get("zipcode"),
+    city: params.get("city"),
+  }
+  // console.log('fhdsihfskjh:',initData);
+  
+  console.log(initData);
+
+  window.localStorage.removeItem('registerData')
   const [course, setCourse] = useState("java");
   const [courseDate, setCourseDate] = useState(today);
-  const [beginner, setBeginner] = useState(false);
-  const [advaneced, setAdvanced] = useState(false);
-  const [pro, setPro] = useState(false);
+  // const [beginner, setBeginner] = useState(false);
+  // const [advaneced, setAdvanced] = useState(false);
+  // const [pro, setPro] = useState(false);
+  // const [level, setLevel] = useState("Anfänger");
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -17,29 +35,40 @@ function Form() {
   const onOptionSelect = (course) => {
     setCourse(course);
   };
-  const onBeginnerToggle = () => {
-    setBeginner(!beginner);
-    setAdvanced(false);
-    setPro(false);
-  };
-  const onAdvancedToggle = () => {
-    setAdvanced(!advaneced);
-    setBeginner(false);
-    setPro(false);
-  };
-  const onProToggle = () => {
-    setPro(!pro);
-    setBeginner(false);
-    setAdvanced(false);
-  };
 
-  function sendForm(formData) {
-    const data = formData.get("name");
-    console.log(data);
-  }
+  // const onBeginnerToggle = () => {
+  //   setBeginner(!beginner);
+  //   setLevel('Anfänger')
+  // };
+  // const onAdvancedToggle = () => {
+  //   setAdvanced(!advaneced);
+  //   setLevel('Fortgeschritten')
+  // };
+  // const onProToggle = () => {
+  //   setPro(!pro);
+  //   setLevel('Professionell')
+  // };
+
+  const getCoursesContent = (courses) => {
+    let content = [];
+    for (let i = 0; i < courses.length; i++) {
+      const item = courses[i];
+      content.push(
+        <option
+          value={item}
+          key={item}
+          onSelect={(e) => onOptionSelect(e.target.value)}
+        >
+          {item}
+        </option>
+      );
+    }
+    return content;
+  };
 
   return (
-      <form action={sendForm}>
+    <div>
+      <form>
         <label htmlFor="course">Kurs</label>
         <select
           name="course"
@@ -47,21 +76,7 @@ function Form() {
           value={course}
           onChange={(e) => setCourse(e.target.value)}
         >
-          <option value="Java" onSelect={(e) => onOptionSelect(e.target.value)}>
-            Java
-          </option>
-          <option
-            value="Python"
-            onSelect={(e) => onOptionSelect(e.target.value)}
-          >
-            Python
-          </option>
-          <option
-            value="JavaScript"
-            onSelect={(e) => onOptionSelect(e.target.value)}
-          >
-            JavaScript
-          </option>
+          {getCoursesContent(props.courses)}
         </select>
         <p>{course}</p>
         <label htmlFor="date">Datum</label>
@@ -76,26 +91,23 @@ function Form() {
           <label htmlFor="beginner">Anfänger</label>
           <input
             type="radio"
-            name="beginner"
-            id="beginner"
-            checked={beginner}
-            onChange={() => onBeginnerToggle()}
+            name="level"
+            id="level"
+            value="Anfänger"
           />
           <label htmlFor="advanced">Fortgeschritten</label>
           <input
             type="radio"
-            name="advanced"
-            id="advanced"
-            checked={advaneced}
-            onChange={() => onAdvancedToggle()}
+            name="level"
+            id="level"
+            value="Fortgeschritten"
           />
           <label htmlFor="pro">Professionell</label>
           <input
             type="radio"
-            name="pro"
-            id="pro"
-            checked={pro}
-            onChange={() => onProToggle()}
+            name="level"
+            id="level"
+            value="Professionell"
           />
         </div>
         <div>
@@ -107,7 +119,6 @@ function Form() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <p>{name}</p>
           <label htmlFor="lastname">Nachname:</label>
           <input
             type="text"
@@ -153,6 +164,35 @@ function Form() {
         </div>
         <button type="submit">Absenden</button>
       </form>
+      <table>
+        <thead>
+          <tr>
+            <td>Datum</td>
+            <td>Kurs</td>
+            <td>Level</td>
+            <td>Name</td>
+            <td>Nachname</td>
+            <td>E-Mail</td>
+            <td>Strasse und Nummer</td>
+            <td>PLZ</td>
+            <td>Ort</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{initData.date}</td>
+            <td>{initData.course}</td>
+            <td>{initData.level}</td>
+            <td>{initData.name}</td>
+            <td>{initData.lastname}</td>
+            <td>{initData.email}</td>
+            <td>{initData.street}</td>
+            <td>{initData.zipcode}</td>
+            <td>{initData.city}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 }
 export default Form;
