@@ -1,5 +1,87 @@
+.bg-style{
+    display: grid;
+    padding: 2rem;
+    background: white;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    justify-items: center;
+    
+}
+.form-bg-style{
+   display: inline;
+    background: lightblue;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    padding: 2rem;
+    width: fit-content;
+
+}
+.form-button-pos{
+  float: right;
+    padding-top: 1rem;
+  
+}
+.form-button-style{
+    background: greenyellow;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    padding: 4px;
+
+}
+.form-style{
+   background-color: antiquewhite;
+   display: grid;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+   justify-items: center;
+   justify-content: end;
+   border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+   padding: 1rem;
+
+}
+.form-grid-style{
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    justify-self: start;
+    justify-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+}
+.form-lable-style{
+    display: flex;
+    flex-direction: row;
+    justify-self: stretch;
+    justify-content: space-between;
+    gap: 4rem;
+}
 .radio-form-style{
     display: grid;
-    grid-row: auto;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    padding: 1rem;
+    justify-self: center;
+    justify-items: start;
+}
+.table-style{
+    background: #000;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    margin: 1rem;
+    
+}
+.table-head-style{
+    background-color: lightblue;
+    
+}
+.table-body-style{
+    background-color: beige;
     
 }

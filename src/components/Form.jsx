@@ -14,12 +14,12 @@ function Form(props) {
     street: params.get("street"),
     zipcode: params.get("zipcode"),
     city: params.get("city"),
-  }
+  };
   // console.log('fhdsihfskjh:',initData);
-  
+
   console.log(initData);
 
-  window.localStorage.removeItem('registerData')
+  window.localStorage.removeItem("registerData");
   const [course, setCourse] = useState("java");
   const [courseDate, setCourseDate] = useState(today);
   // const [beginner, setBeginner] = useState(false);
@@ -67,106 +67,140 @@ function Form(props) {
   };
 
   return (
-    <div>
-      <form>
-        <label htmlFor="course">Kurs</label>
-        <select
-          name="course"
-          id="course"
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
-        >
-          {getCoursesContent(props.courses)}
-        </select>
-        <p>{course}</p>
-        <label htmlFor="date">Datum</label>
-        <input
-          type="date"
-          name="date"
-          id="date"
-          value={courseDate}
-          onChange={(e) => setCourseDate(e.target.value)}
-        />
-        <div className="radio-form-style">
-          <label htmlFor="beginner">Anfänger</label>
-          <input
-            type="radio"
-            name="level"
-            id="level"
-            value="Anfänger"
-          />
-          <label htmlFor="advanced">Fortgeschritten</label>
-          <input
-            type="radio"
-            name="level"
-            id="level"
-            value="Fortgeschritten"
-          />
-          <label htmlFor="pro">Professionell</label>
-          <input
-            type="radio"
-            name="level"
-            id="level"
-            value="Professionell"
-          />
+    <div className="bg-style">
+      <form className="form-bg-style">
+        <div className="form-style">
+        <div className="form-grid-style">
+            <div className="form-grid-style">
+              <label className="form-lable-style" htmlFor="course">
+                Kurs
+                <select
+                  name="course"
+                  id="course"
+                  value={course}
+                  onChange={(e) => setCourse(e.target.value)}
+                >
+                  {getCoursesContent(props.courses)}
+                </select>
+              </label>
+              <label className="form-lable-style" htmlFor="date">
+                Datum
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  value={courseDate}
+                  onChange={(e) => setCourseDate(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className="radio-form-style">
+              <label className="form-lable-style" htmlFor="beginner">
+                Anfänger
+                <input
+                  type="radio"
+                  name="level"
+                  id="level"
+                  value="Anfänger"
+                  defaultChecked
+                />
+              </label>
+              <label className="form-lable-style" htmlFor="advanced">
+                Fortgeschritten
+                <input
+                  type="radio"
+                  name="level"
+                  id="level"
+                  value="Fortgeschritten"
+                />
+              </label>
+              <label className="form-lable-style" htmlFor="pro">
+                Professionell
+                <input
+                  type="radio"
+                  name="level"
+                  id="level"
+                  value="Professionell"
+                />
+              </label>
+            </div>
+          </div>
+          <div>
+            <div className="form-grid-style">
+              <label className="form-lable-style" htmlFor="name">
+                Name:
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label className="form-lable-style" htmlFor="lastname">
+                Nachname:
+                <input
+                  type="text"
+                  name="lastname"
+                  id="lastname"
+                  value={lastname}
+                  onChange={(e) => setLastname(e.target.value)}
+                />
+              </label>
+              <label className="form-lable-style" htmlFor="email">
+                Email:
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+            
+            
+              <label className="form-lable-style" htmlFor="street">
+                Strasse und Nummer:
+                <input
+                  type="text"
+                  name="street"
+                  id="street"
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
+                />
+              </label>
+              <label className="form-lable-style" htmlFor="zipcode">
+                PLZ:
+                <input
+                  type="text"
+                  name="zipcode"
+                  id="zipcode"
+                  value={plz}
+                  onChange={(e) => setPlz(e.target.value)}
+                />
+              </label>
+              <label className="form-lable-style" htmlFor="city">
+                Stadt:
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </label>
+            </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="lastname">Nachname:</label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          />
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div className="form-button-pos">
+          <button type="submit" className="form-button-style">
+            Absenden
+          </button>
         </div>
-        <div>
-          <label htmlFor="street">Strasse und Nummer:</label>
-          <input
-            type="text"
-            name="street"
-            id="street"
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-          />
-          <label htmlFor="zipcode">PLZ:</label>
-          <input
-            type="text"
-            name="zipcode"
-            id="zipcode"
-            value={plz}
-            onChange={(e) => setPlz(e.target.value)}
-          />
-          <label htmlFor="city">Stadt:</label>
-          <input
-            type="text"
-            name="city"
-            id="city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </div>
-        <button type="submit">Absenden</button>
       </form>
-      <table>
-        <thead>
-          <tr>
+      <table className="table-style">
+        <thead >
+          <tr className="table-head-style">
             <td>Datum</td>
             <td>Kurs</td>
             <td>Level</td>
@@ -178,8 +212,8 @@ function Form(props) {
             <td>Ort</td>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody >
+          <tr className="table-body-style">
             <td>{initData.date}</td>
             <td>{initData.course}</td>
             <td>{initData.level}</td>
