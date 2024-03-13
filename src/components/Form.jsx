@@ -15,17 +15,10 @@ function Form(props) {
     zipcode: params.get("zipcode"),
     city: params.get("city"),
   };
-  // console.log('fhdsihfskjh:',initData);
-
-  console.log(initData);
 
   window.localStorage.removeItem("registerData");
   const [course, setCourse] = useState("java");
   const [courseDate, setCourseDate] = useState(today);
-  // const [beginner, setBeginner] = useState(false);
-  // const [advaneced, setAdvanced] = useState(false);
-  // const [pro, setPro] = useState(false);
-  // const [level, setLevel] = useState("Anfänger");
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -35,19 +28,6 @@ function Form(props) {
   const onOptionSelect = (course) => {
     setCourse(course);
   };
-
-  // const onBeginnerToggle = () => {
-  //   setBeginner(!beginner);
-  //   setLevel('Anfänger')
-  // };
-  // const onAdvancedToggle = () => {
-  //   setAdvanced(!advaneced);
-  //   setLevel('Fortgeschritten')
-  // };
-  // const onProToggle = () => {
-  //   setPro(!pro);
-  //   setLevel('Professionell')
-  // };
 
   const getCoursesContent = (courses) => {
     let content = [];
