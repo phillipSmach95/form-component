@@ -48,6 +48,7 @@ function Form(props) {
 
   return (
     <div className="bg-style">
+      <h1>Kurs Anmeldung</h1>
       <form className="form-bg-style">
         <div className="form-style">
         <div className="form-grid-style">
